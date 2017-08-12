@@ -1,6 +1,10 @@
-<html>
+﻿<html>
   <head>
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		document.querySelector("#cameraWrapper").attr('position', {x: 1, y: 20, z: 1});
+	</script>
   </head>
   <body>
 	<a-scene>
@@ -8,8 +12,11 @@
 			<a-asset-item id="egy_table_obj" src="modeles/egyptian_Table/source/Egy1.obj"></a-asset-item>
 			<a-asset-item id="egy_table_mtl" src="modeles/egyptian_Table/source/Egy1.mtl"></a-asset-item>
 		</a-assets>
-	<a-entity obj-model="obj: #egy_table_obj; mtl: #egy_table_mtl" ></a-entity>
+	<a-entity obj-model="obj: #egy_table_obj; mtl: #egy_table_mtl" position="0 11 -15" ></a-entity>
 	<a-plane position="0 0 -4" rotation="-90 0 0" width="40" height="40" color="#7BC8A4"></a-plane>
+	<a-entity id='cameraWrapper' position="0 0 0">
+  <a-camera></a-camera>
+</a-entity>
 	</a-scene>
   </body>
 </html>
