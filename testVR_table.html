@@ -3,9 +3,10 @@
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://unpkg.com/aframe-animation-component@3.2.1/dist/aframe-animation-component.min.js"></script> <!-- controller ? -->
-    <scripts src="vendors/touch-control.js"></script>
+    <script src="https://unpkg.com/aframe-click-drag-component"></script>
 	<script type="text/javascript">
 		//document.querySelector("#cameraWrapper").setAttribute("position", "{x: 1, y: 20, z: 1}");
+		registerAframeClickDragComponent(window.AFRAME);
 	</script>
   </head>
   <body>
@@ -16,7 +17,7 @@
             		</a-assets>
             	<a-entity id="egyptian_Table" obj-model="mtl:modeles/egyptian_Table/source/Egy1.mtl;obj:modeles/egyptian_Table/source/Egy1.obj" position="0.052 0.513 -0.89" scale="0.095 0.045 0.065">
             	</a-entity>
-            	<a-box id="tomato_box" color="tomato" depth="2" height="4" width="0.5" position="-0.04 0.97 -0.326" scale="0.1 0.1 0.1" geometry="depth:1;height:1;width:1">
+            	<a-box click-drag id="tomato_box" color="tomato" depth="2" height="4" width="0.5" position="-0.04 0.97 -0.326" scale="0.1 0.1 0.1" geometry="depth:1;height:1;width:1">
             	</a-box>
                 <a-plane id="base_plane" position="-0.01 0.01 -0.557" rotation="-90 0 0" width="4" height="4" color="#7BC8A4">
             	</a-plane>
@@ -28,3 +29,4 @@
 <a-entity id="ocu_hand_right" oculus-touch-controls="hand:right"  rotation="-18.304561948131234 7.623476326997163 62.54247782161965" tracked-controls="id:Oculus Touch (Right)" obj-model="mtl:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.mtl;obj:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.obj"></a-entity>            	</a-scene>
   </body>
 </html>
+
