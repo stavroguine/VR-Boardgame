@@ -2,12 +2,7 @@
   <head>
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/aframe-animation-component@3.2.1/dist/aframe-animation-component.min.js"></script> <!-- controller ? -->
-    <script src="https://unpkg.com/aframe-click-drag-component"></script>
-	<script type="text/javascript">
-		//document.querySelector("#cameraWrapper").setAttribute("position", "{x: 1, y: 20, z: 1}");
-		registerAframeClickDragComponent(window.AFRAME);
-	</script>
+<!--    <script src="https://unpkg.com/aframe-animation-component@3.2.1/dist/aframe-animation-component.min.js"></script> <!-- controller ? -->
   </head>
   <body>
       <a-scene class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
@@ -28,7 +23,6 @@
 				scale="0.095 0.045 0.065">
             </a-entity>
             <a-box 
-				click-drag=""
 				id="tomato_box" 
 				color="tomato" 
 				depth="2" 
@@ -58,20 +52,20 @@
 					wasd-controls="">
 				</a-camera>
             </a-entity>
-            <a-entity 
-				id="ocu_hand_left" 
-				oculus-touch-controls=""  
-				rotation="-31.529 57.169 -49.679" 
-				tracked-controls="id:Oculus Touch (Left)" 
-				obj-model="obj:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.obj;mtl:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.mtl">
-			</a-entity>
-			<a-entity 
-				id="ocu_hand_right" 
-				oculus-touch-controls="hand:right"  
-				rotation="-18.304561948131234 7.623476326997163 62.54247782161965" 
-				tracked-controls="id:Oculus Touch (Right)" 
-				obj-model="mtl:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.mtl;obj:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.obj">
-			</a-entity>            	
+				<a-entity 
+					id="ocu_hand_left" 
+					oculus-touch-controls=""  
+					rotation="-31.529 57.169 -49.679" 
+					tracked-controls="id:Oculus Touch (Left)" 
+					obj-model="obj:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.obj;mtl:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.mtl">
+				</a-entity>
+				<a-entity 
+					id="ocu_hand_right" 
+					oculus-touch-controls="hand:right"  
+					rotation="-18.304561948131234 7.623476326997163 62.54247782161965" 
+					tracked-controls="id:Oculus Touch (Right)" 
+					obj-model="mtl:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.mtl;obj:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.obj">
+				</a-entity>            	
 		</a-scene>
   </body>
 </html>
