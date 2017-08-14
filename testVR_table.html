@@ -11,22 +11,68 @@
   </head>
   <body>
       <a-scene class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
-            		<a-assets>
-            			<a-asset-item id="egy_table_obj" src="modeles/egyptian_Table/source/Egy1.obj"></a-asset-item>
-            			<a-asset-item id="egy_table_mtl" src="modeles/egyptian_Table/source/Egy1.mtl"></a-asset-item>
-            		</a-assets>
-            	<a-entity id="egyptian_Table" obj-model="mtl:modeles/egyptian_Table/source/Egy1.mtl;obj:modeles/egyptian_Table/source/Egy1.obj" position="0.052 0.513 -0.89" scale="0.095 0.045 0.065">
-            	</a-entity>
-            	<a-box click-drag id="tomato_box" color="tomato" depth="2" height="4" width="0.5" position="-0.04 0.97 -0.326" scale="0.1 0.1 0.1" geometry="depth:1;height:1;width:1">
-            	</a-box>
-                <a-plane id="base_plane" position="-0.01 0.01 -0.557" rotation="-90 0 0" width="4" height="4" color="#7BC8A4">
-            	</a-plane>
-                <a-entity id="cameraWrapper" position="-0.204 16.517 1">
-                    <a-camera id="main_Camera" position="0.019 -13.787 -0.966" rotation="-9 -272 0" camera="active:false" look-controls="" wasd-controls="">
-                            		</a-camera>
-                </a-entity>
-                <a-entity id="ocu_hand_left" oculus-touch-controls=""  rotation="-31.529 57.169 -49.679" tracked-controls="id:Oculus Touch (Left)" obj-model="obj:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.obj;mtl:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.mtl"></a-entity>
-<a-entity id="ocu_hand_right" oculus-touch-controls="hand:right"  rotation="-18.304561948131234 7.623476326997163 62.54247782161965" tracked-controls="id:Oculus Touch (Right)" obj-model="mtl:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.mtl;obj:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.obj"></a-entity>            	</a-scene>
+			<a-assets>
+            	<a-asset-item 
+					id="egy_table_obj" 
+					src="modeles/egyptian_Table/source/Egy1.obj">
+				</a-asset-item>
+            	<a-asset-item 
+					id="egy_table_mtl" 
+					src="modeles/egyptian_Table/source/Egy1.mtl">
+				</a-asset-item>
+			</a-assets>
+            <a-entity 
+				id="egyptian_Table" 
+				obj-model="mtl:modeles/egyptian_Table/source/Egy1.mtl;obj:modeles/egyptian_Table/source/Egy1.obj" 
+				position="0.052 0.513 -0.89" 
+				scale="0.095 0.045 0.065">
+            </a-entity>
+            <a-box 
+				click-drag 
+				id="tomato_box" 
+				color="tomato" 
+				depth="2" 
+				height="4" 
+				width="0.5" 
+				position="-0.04 0.97 -0.326" 
+				scale="0.1 0.1 0.1" 
+				geometry="depth:1;height:1;width:1">
+            </a-box>
+            <a-plane 
+				id="base_plane" 
+				position="-0.01 0.01 -0.557" 
+				rotation="-90 0 0" 
+				width="4" 
+				height="4" 
+				color="#7BC8A4">
+            </a-plane>
+            <a-entity 
+				id="cameraWrapper" 
+				position="-0.204 16.517 1">
+                <a-camera 
+					id="main_Camera" 
+					position="0.019 -13.787 -0.966" 
+					rotation="-9 -272 0" 
+					camera="active:false" 
+					look-controls="" 
+					wasd-controls="">
+				</a-camera>
+            </a-entity>
+            <a-entity 
+				id="ocu_hand_left" 
+				oculus-touch-controls=""  
+				rotation="-31.529 57.169 -49.679" 
+				tracked-controls="id:Oculus Touch (Left)" 
+				obj-model="obj:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.obj;mtl:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.mtl">
+			</a-entity>
+			<a-entity 
+				id="ocu_hand_right" 
+				oculus-touch-controls="hand:right"  
+				rotation="-18.304561948131234 7.623476326997163 62.54247782161965" 
+				tracked-controls="id:Oculus Touch (Right)" 
+				obj-model="mtl:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.mtl;obj:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.obj">
+			</a-entity>            	
+		</a-scene>
   </body>
 </html>
 
