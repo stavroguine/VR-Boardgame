@@ -1,11 +1,12 @@
 ﻿<html>
   <head>
-    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.6.1/aframe.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!--    <script src="https://unpkg.com/aframe-animation-component@3.2.1/dist/aframe-animation-component.min.js"></script> <!-- controller ? -->
-    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+
     <script src="https://unpkg.com/super-hands@1.1.0/dist/super-hands.min.js"></script>
-    <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.10.0/dist/aframe-extras.js"></script>
   </head>
   <body>
       <a-scene physics class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
@@ -25,7 +26,7 @@
 				position="0.052 0.513 -0.89"
 				scale="0.095 0.045 0.065">
             </a-entity>
-            <a-box  hoverable grabbable stretchable drag-droppable 
+            <a-box  hoverable grabbable stretchable drag-droppable
 				id="tomato_box"
 				color="tomato"
 				depth="2"
