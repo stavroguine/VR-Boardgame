@@ -13,32 +13,15 @@
     <script src="src/components/interfaces/aframe-physics-collider.js"></script>
     <script src="src/components/interfaces/aframe-physics-collision-filter.js"></script>
     <script src="src/components/interfaces/aframe-physics-sleepy.js"></script>
-
-    <script>
-  /*'tracked-controls' is not added until after the controllers are found
-     now (Aframe 0.4.0), so this little component allows a delayed addition
-     of the the physics component to avoid errors */
-  AFRAME.registerComponent('event-state', {
-    schema: {
-      event: { default: 'model-loaded' },
-      state: { default: 'loaded' }
-    },
-    init: function () {
-      this.setStateB = this.setState.bind(this);
-    },
-    play: function() {
-      this.el.addEventListener(this.data.event, this.setStateB);
-    },
-    setState: function (evt) {
-      this.el.addState(this.data.state);
-    }
-  });
-</script>
   </head>
   <body>
       <a-scene  physics="debug: true" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
-          <a-mixin id="cube" geometry="width: 0.5; height: 0.5; depth: 0.5" dynamic-body></a-mixin>
-<a-mixin id="cube-collided" material="opacity: 0.7; transparent: true"></a-mixin>
+          <a-mixin
+           id="cube"
+                geometry="width: 0.5; height: 0.5; depth: 0.5"
+             dynamic-body>
+         </a-mixin>
+          <a-mixin id="cube-collided" material="opacity: 0.7; transparent: true"></a-mixin>
 			<a-assets>
             	<a-asset-item
 					id="egy_table_obj"
@@ -50,6 +33,7 @@
 				</a-asset-item>
 			</a-assets>
             <a-entity static-body
+                collision-filter="group: red; collidesWith: default, red, blue"
 				id="egyptian_Table"
 				obj-model="mtl:modeles/egyptian_Table/source/Egy1.mtl;obj:modeles/egyptian_Table/source/Egy1.obj"
 				position="0.052 0.513 -0.89"
@@ -63,14 +47,14 @@
 				depth="2"
 				height="4"
 				width="0.5"
-				position="0"
-				scale="0.1 0.1 0.1"
+				position="-0.04 10 -0.326"
+				scale="0.2 0.2 0.2"
 				geometry="depth:1;height:1;width:1">
             </a-box>
 
 
             <a-plane
-            collision-filter="group: red; collidesWith: default, red, blue" 
+            collision-filter="group: red; collidesWith: default, red, blue"
             static-body
 				id="base_plane"
 				position="0"
