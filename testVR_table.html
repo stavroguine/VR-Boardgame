@@ -3,18 +3,19 @@
     <script src="https://aframe.io/releases/0.6.1/aframe.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <!--    <script src="https://unpkg.com/aframe-animation-component@3.2.1/dist/aframe-animation-component.min.js"></script>  -->
-    <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.js"></script>
-    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.10.0/dist/aframe-extras.js"></script>
+    <!-- <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.js"></script> -->
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.10.1/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/super-hands@1.1.0/dist/super-hands.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/aframe-look-at-component/master/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-border-component@0.1.3/dist/aframe-border-component.min.js"></script>
     <!-- PHYSICS COLLIDER - https://github.com/wmurphyrd/aframe-physics-system/blob/5a5f6f6d7cd1b4c4b37f6f1d3e612e646b67ab46/examples/components.html -->
-    <script src="src/components/interfaces/aframe-physics-collider.js"></script>
+    <!-- <script src="src/components/interfaces/aframe-physics-collider.js"></script>
     <script src="src/components/interfaces/aframe-physics-collision-filter.js"></script>
-    <script src="src/components/interfaces/aframe-physics-sleepy.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="src/css/styles.css">
+    <script src="src/components/interfaces/aframe-physics-sleepy.js"></script> -->
 </head>
 <body>
-<a-scene physics="debug: true;" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
+<a-scene physics="debug: true; gravity:-7" class="fullscreen">
+
     <!-- START MIXINS -->
     <a-mixin
         id="cube"
@@ -33,7 +34,8 @@
         physics-collider>
     </a-mixin>
     <!-- END MIXINS -->
-    <!-- START SCENE -->
+
+    <!-- START ASSETS -->
     <a-assets>
         <a-asset-item
             id="egy_table_obj"
@@ -44,42 +46,88 @@
             src="modeles/egyptian_Table/source/Egy1.mtl">
         </a-asset-item>
     </a-assets>
-    <a-entity static-body
-        id="egyptian_Table"
-        collision-filter="group: red; collidesWith: default, red, blue"
-        obj-model="mtl:modeles/egyptian_Table/source/Egy1.mtl;obj:modeles/egyptian_Table/source/Egy1.obj"
-        position="0.052 0.513 -0.89"
-        scale="0.095 0.045 0.065">
+    <a-assets>
+        <img
+            id="texture-wall"
+            src="src/img/wall.png">
+        </img>
+        <a-box
+            id="wall-one"
+            static-body
+            material="src: #texture-wall"
+            depth="1"
+            width="20"
+            height="50">
+        </a-box>
+    </a-assets>
+    <!-- END ASSETS -->
+
+    <!-- START ENTITY -->
+    <a-plane
+        id="ceilling"
+        src="src/img/ceiling.png"
+        material="src: #texture-wall"
+        position="0 16 0"
+        rotation="90 0 0"
+        width="100"
+        height="100"
+        static-body>
+    </a-plane>
+    <a-entity
+        id="b4"
+        border='sides: 4; radius: 10; wall: #wall-one;'
+        position='0 0.5 0'>
     </a-entity>
     <a-entity
+        id="egyptian_Table"
+        obj-model="mtl:modeles/egyptian_Table/source/Egy1.mtl;obj:modeles/egyptian_Table/source/Egy1.obj"
+        position="0.052 0.513 -0.89"
+        scale="0.095 0.045 0.065"
+        static-body>
+    </a-entity>
+    <!-- <a-entity
         id="tomato_box"
         mixin="cube"
         position="-0.04 15 -0.326"
         scale="0.2 0.2 0.2">
-    </a-entity>
-    <a-plane
-        collision-filter="group: red; collidesWith: default, red, blue"
-        static-body
-        id="base_plane"
-        position="0"
-        rotation="-90 0 0"
-        width="4"
-        height="4"
-        color="#7BC8A4">
-    </a-plane>
+    </a-entity> -->
+    <a-box
+        dynamic-body
+        hoverable
+        grabbable
+        stretchable
+        drag-droppable
+        depth="0.5"
+        height="0.5"
+        width="0.5"
+        position="-0.04 15 -0.326"
+        color="tomato">
+    </a-box>
+    <!-- <a-entity
+        id="main_Camera"
+        camera="userHeight: 0.8"
+        position="-0.204 1 1"
+        jump-ability
+        kinematic-body
+        universal-controls>
+    </a-entity> -->
     <a-entity
-        id="cameraWrapper"
-        position="-0.204 16.517 1">
-            <a-camera
-                id="main_Camera"
-                position="0.019 -13.787 -0.966"
-                rotation="-9 -272 0"
-                camera="active:false"
-                look-controls=""
-                wasd-controls="">
-            </a-camera>
+        id="player"
+        camera="userHeight: 0.6"
+        jump-ability
+        universal-controls
+        kinematic-body
+        position="-0.204 1 1">
     </a-entity>
-    <!-- END SCENE -->
+    <a-grid
+        id="ground"
+        src="src/img/floor.png"
+        width="100"
+        height="100"
+        static-body>
+    </a-grid>
+    <!-- END ENTITY -->
+
     <!-- START - AFRAME DEFAULT ACTION FOR TOUCHS -->
     <!-- <a-entity
     id="ocu_hand_left"
@@ -96,8 +144,9 @@
     obj-model="mtl:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.mtl;obj:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.obj">
     </a-entity> -->
     <!-- END - AFRAME DEFAULT ACTION FOR TOUCHS -->
+
     <!-- START - PLUGIN SUPERHAND CONTROLLER -->
-    <a-entity       
+    <a-entity
         hand-controls="left"
         mixin="controller">
     </a-entity>
@@ -106,6 +155,7 @@
         mixin="controller">
     </a-entity>
     <!-- END - PLUGIN SUPERHAND CONTROLLER -->
+
 </a-scene>
 </body>
 </html>
