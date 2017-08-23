@@ -12,26 +12,32 @@
     <!-- <script src="src/components/interfaces/aframe-physics-collider.js"></script>
     <script src="src/components/interfaces/aframe-physics-collision-filter.js"></script>
     <script src="src/components/interfaces/aframe-physics-sleepy.js"></script> -->
+    <script src="src/javascripts/main.js"></script>
+    <script>
+    AFRAME.registerComponent('listener', {
+      tick: function () {
+        console.log(this.el.getAttribute('position'));
+      }
+    });
+    </script>
 </head>
 <body>
 <a-scene physics="debug: true; gravity:-7" class="fullscreen">
 
     <!-- START MIXINS -->
-    <a-mixin
-        id="cube"
-        collision-filter="group: red; collidesWith: default, red, blue"
-        geometry="width: 2; height: 2; depth: 2"
+    <a-mixin id="cube"
         material="color: tomato"
+        geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
         hoverable grabbable stretchable drag-droppable
-        dynamic-body shadow>
+        shadow
+        dynamic-body
+        event-set="_event: drag-drop; geometry.primitive: sphere; geometry.radius: 0.25">
     </a-mixin>
-    <a-mixin
-        id="controller"
-        collision-filter = "collidesWith: default, red, green, blue;"
-        sphere-collider="objects: .cube"
-        grab
+
+    <a-mixin id="controller"
         super-hands
-        physics-collider>
+        static-body
+        sphere-collider="objects: .cube">
     </a-mixin>
     <!-- END MIXINS -->
 
@@ -85,24 +91,14 @@
         scale="0.095 0.045 0.065"
         static-body>
     </a-entity>
-    <!-- <a-entity
-        id="tomato_box"
+    <a-entity
+        id="cube_a"
+        listener
+        class="cube"
         mixin="cube"
-        position="-0.04 15 -0.326"
-        scale="0.2 0.2 0.2">
-    </a-entity> -->
-    <a-box
-        dynamic-body
-        hoverable
-        grabbable
-        stretchable
-        drag-droppable
-        depth="0.5"
-        height="0.5"
-        width="0.5"
-        position="-0.04 15 -1.20"
-        color="tomato">
-    </a-box>
+        position="-0.04 15 -1.20">
+    </a-entity>
+    <!-- START - PLAYER AND CAMERA ENTITYS  -->
     <!-- <a-entity
         id="main_Camera"
         camera="userHeight: 0.8"
@@ -111,14 +107,15 @@
         kinematic-body
         universal-controls>
     </a-entity> -->
-    <a-entity
+    <!-- <a-entity
         id="player"
         camera="userHeight: 0.6"
         jump-ability
         universal-controls
         kinematic-body
         position="-0.204 1 1">
-    </a-entity>
+    </a-entity> -->
+    <!-- STOP - PLAYER AND CAMERA ENTITYS  -->
     <a-grid
         id="ground"
         src="src/img/floor.png"
@@ -126,36 +123,20 @@
         height="100"
         static-body>
     </a-grid>
-    <!-- END ENTITY -->
 
-    <!-- START - AFRAME DEFAULT ACTION FOR TOUCHS -->
-    <!-- <a-entity
-    id="ocu_hand_left"
-    oculus-touch-controls=""
-    rotation="-31.529 57.169 -49.679"
-    tracked-controls="id:Oculus Touch (Left)"
-    obj-model="obj:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.obj;mtl:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.mtl">
-    </a-entity>
-    <a-entity
-    id="ocu_hand_right"
-    oculus-touch-controls="hand:right"
-    rotation="-18.304561948131234 7.623476326997163 62.54247782161965"
-    tracked-controls="id:Oculus Touch (Right)"
-    obj-model="mtl:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.mtl;obj:https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.obj">
-    </a-entity> -->
-    <!-- END - AFRAME DEFAULT ACTION FOR TOUCHS -->
 
     <!-- START - PLUGIN SUPERHAND CONTROLLER -->
     <a-entity
-        hand-controls="left"
+        oculus-touch-controls="hand: left"
         mixin="controller">
     </a-entity>
     <a-entity
-        hand-controls="right"
+        oculus-touch-controls="hand: right"
         mixin="controller">
     </a-entity>
     <!-- END - PLUGIN SUPERHAND CONTROLLER -->
 
+    <!-- END ENTITY -->
 </a-scene>
 </body>
 </html>

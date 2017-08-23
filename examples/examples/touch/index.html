@@ -6,6 +6,7 @@
     <script src="https://rawgit.com/ngokevin/aframe-event-set-component/master/dist/aframe-event-set-component.min.js"></script>
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
     <script src="../build.js"></script>
+    <script src="../chessboard3js-0.1.2/js/chessboard3.min.js"></script>
     <script>
     AFRAME.registerComponent('listener', {
       tick: function () {
@@ -13,6 +14,10 @@
         console.log(this.el.getAttribute('position'));
       }
     });
+
+    $(document).ready(function(){
+        var board1 = new ChessBoard3('board1', 'start');
+    })
     </script>
 
   </head>
@@ -31,7 +36,9 @@
                   shadow
                   event-set="_event: drag-drop; geometry.primitive: sphere; geometry.radius: 0.25"></a-mixin>
          <a-mixin id="cube2" geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
-                  hoverable grabbable stretchable drag-droppable
+                  hoverable grabbable stretchabl
+
+                  e drag-droppable
                   shadow
                   dynamic-body
                   event-set="_event: drag-drop; geometry.primitive: sphere; geometry.radius: 0.25"></a-mixin>
@@ -56,6 +63,7 @@
           height="100"
           static-body>
       </a-plane>
+
     </a-scene>
   </body>
 </html>
