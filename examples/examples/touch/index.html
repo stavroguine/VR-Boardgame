@@ -5,9 +5,15 @@
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-event-set-component/master/dist/aframe-event-set-component.min.js"></script>
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
-    <!-- Replace "../build.js" with the super-hands distribution to run locally:
-        "https://unpkg.com/super-hands@1.1.0/dist/super-hands.min.js" -->
     <script src="../build.js"></script>
+    <script>
+    AFRAME.registerComponent('listener', {
+      tick: function () {
+        console.log('coucou');
+        console.log(this.el.getAttribute('position'));
+      }
+    });
+    </script>
 
   </head>
   <body>
@@ -37,9 +43,9 @@
       <a-entity oculus-touch-controls="hand: left" mixin="controller"></a-entity>
       <a-entity oculus-touch-controls="hand: right" mixin="controller"></a-entity>
 
-      <a-entity class="cube" mixin="cube" position="-1 1 -1" material="color: blue"></a-entity>
-      <a-entity class="cube" mixin="cube1" position="0 1 -1" material="color: red"></a-entity>
-      <a-entity class="cube" mixin="cube2" position="1 1 -1" material="color: green"></a-entity>
+      <a-entity  id="cube_a" class="cube" mixin="cube" position="-1 1 -1" material="color: blue"></a-entity>
+      <a-entity id="cube_b" class="cube" mixin="cube1" position="0 1 -1" material="color: red"></a-entity>
+      <a-entity listener id="cube_c" class="cube" mixin="cube2" position="1 1 -1" material="color: green"></a-entity>
       <a-plane
           id="ceilling"
           src="src/img/ceiling.png"
