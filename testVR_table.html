@@ -23,29 +23,20 @@
 </head>
 <body>
 <a-scene physics="debug: true; gravity:-7" class="fullscreen">
-	<!-- MSS  -->
-		<a-assets>
-			<a-style src="src/mss/basic.mss"></a-style>
-		</a-assets>
-	<!-- END MSS-->
+
     <!-- START MIXINS -->
-    <!--<a-mixin id="cube"
+    <a-mixin id="cube"
         material="color: #00000"
         geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
         hoverable grabbable stretchable drag-droppable
         shadow
         dynamic-body
         event-set="_event: drag-drop; geometry.primitive: sphere; geometry.radius: 0.25">
-    </a-mixin>-->
-	 <!--<a-mixin id="cube"
-		hoverable grabbable stretchable drag-droppable
-        shadow
-        dynamic-body
-        event-set="_event: drag-drop; geometry.primitive: sphere; geometry.radius: 0.25">
-    </a-mixin>-->
-	
-	
-	
+    </a-mixin>
+
+
+
+
     <a-mixin id="controller"
         super-hands
         static-body
