@@ -14,26 +14,38 @@
     <script src="src/components/interfaces/aframe-physics-sleepy.js"></script> -->
     <script src="src/javascripts/main.js"></script>
     <script>
-    AFRAME.registerComponent('listener', {
+   /* AFRAME.registerComponent('listener', {
       tick: function () {
         console.log(this.el.getAttribute('position'));
       }
-    });
+    });/*/
     </script>
 </head>
 <body>
 <a-scene physics="debug: true; gravity:-7" class="fullscreen">
-
+	<!-- MSS  -->
+		<a-assets>
+			<a-style src="src/mss/basic.mss"></a-style>
+		</a-assets>
+	<!-- END MSS-->
     <!-- START MIXINS -->
-    <a-mixin id="cube"
-        material="color: tomato"
+    <!--<a-mixin id="cube"
+        material="color: #00000"
         geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
         hoverable grabbable stretchable drag-droppable
         shadow
         dynamic-body
         event-set="_event: drag-drop; geometry.primitive: sphere; geometry.radius: 0.25">
-    </a-mixin>
-
+    </a-mixin>-->
+	 <!--<a-mixin id="cube"
+		hoverable grabbable stretchable drag-droppable
+        shadow
+        dynamic-body
+        event-set="_event: drag-drop; geometry.primitive: sphere; geometry.radius: 0.25">
+    </a-mixin>-->
+	
+	
+	
     <a-mixin id="controller"
         super-hands
         static-body
@@ -42,7 +54,7 @@
     <!-- END MIXINS -->
 
     <!-- START ASSETS -->
-    <a-assets>
+
         <a-asset-item
             id="egy_table_obj"
             src="modeles/egyptian_Table/source/Egy1.obj">
